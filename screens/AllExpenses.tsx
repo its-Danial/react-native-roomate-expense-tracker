@@ -1,13 +1,9 @@
 import { FC } from "react";
-import { View, Text } from "react-native";
+import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
 
 type AllExpensesProps = {};
 
 const AllExpenses: FC<AllExpensesProps> = (props) => {
-  return (
-    <View className="bg-black">
-      <Text>AllExpenses</Text>
-    </View>
-  );
+  return <ExpensesOutput expensesPeriod="Total" />;
 };
 export default AllExpenses;
