@@ -9,7 +9,7 @@ import ManageExpense from "../screens/ManageExpense";
 import RecentExpenses from "../screens/RecentExpenses";
 import AllExpenses from "../screens/AllExpenses";
 import colors from "tailwindcss/colors";
-import IconButton from "../components/IconButton";
+import IconButton from "../components/UI/IconButton";
 
 export default function Navigation() {
   return (

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   pressed: {
-    opacity: 0.75,
+    opacity: 0.5,
     borderRadius: 9999,
     backgroundColor: colors.blue[100],
   },
