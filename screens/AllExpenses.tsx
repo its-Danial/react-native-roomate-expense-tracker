@@ -1,9 +1,12 @@
 import { FC } from "react";
 import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
+import { useAppSelector } from "../hooks/redux-hook";
 
 type AllExpensesProps = {};
 
 const AllExpenses: FC<AllExpensesProps> = (props) => {
-  return <ExpensesOutput expensesPeriod="Total" />;
+  const expenses = useAppSelector((state) => state.expenses.expenses);
+
+  return <ExpensesOutput expenses={expenses} expensesPeriod="Total" />;
 };
 export default AllExpenses;
