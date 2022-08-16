@@ -9,6 +9,7 @@ import ManageExpense from "../screens/ManageExpense";
 import RecentExpenses from "../screens/RecentExpenses";
 import AllExpenses from "../screens/AllExpenses";
 import colors from "tailwindcss/colors";
+import AddIconButton from "../UI/AddIconButton";
 
 export default function Navigation() {
   return (
@@ -36,14 +37,15 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="AllExpenses"
       screenOptions={{
-        headerStyle: { backgroundColor: colors.blue[600] },
-        headerTintColor: colors.slate[50],
-        tabBarStyle: { backgroundColor: colors.blue[50] },
+        headerStyle: { backgroundColor: colors.gray[100] },
+        headerTintColor: colors.blue[600],
+        tabBarStyle: { backgroundColor: colors.gray[100] },
         tabBarActiveTintColor: colors.blue[600],
         tabBarInactiveTintColor: colors.slate[400],
-        headerShadowVisible: false,
+        headerRight: ({ tintColor }) => <AddIconButton color={tintColor} iconName="add" size={30} />,
+        // headerShadowVisible: false,
       }}
-      sceneContainerStyle={{ backgroundColor: colors.blue[50] }}
+      // sceneContainerStyle={{ backgroundColor: colors.slate[50] }}
     >
       <BottomTab.Screen
         name="RecentExpenses"
