@@ -9,7 +9,7 @@ declare global {
 }
 
 export type RootStackParamList = {
-  ManageExpense: undefined;
+  ManageExpense: { expenseId?: string } | undefined;
   ExpensesOverview: NavigatorScreenParams<RootTabParamList> | undefined;
 };
 

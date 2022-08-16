@@ -1,7 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import { NativeWindStyleSheet } from "nativewind";
 import { FC } from "react";
-import { View, Text, Pressable } from "react-native";
-import colors from "tailwindcss/colors";
+import { Pressable, Text, View } from "react-native";
+
 import { getFormattedDate } from "../../utils/formatDate";
 
 type ExpenseItemProps = {
@@ -12,8 +13,10 @@ type ExpenseItemProps = {
 };
 
 const ExpenseItem: FC<ExpenseItemProps> = (props) => {
+  const navigation = useNavigation();
+
   const expensePressHandler = () => {
-    console.log("hello1");
+    navigation.navigate("ManageExpense", { expenseId: props.id });
   };
 
   return (
@@ -45,9 +48,6 @@ NativeWindStyleSheet.create({
       shadowOpacity: 0.17,
       shadowRadius: 2.54,
       elevation: 3,
-    },
-    pressed: {
-      backgroundColor: "red",
     },
   },
 });

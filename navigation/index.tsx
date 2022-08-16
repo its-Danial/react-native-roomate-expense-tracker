@@ -9,7 +9,7 @@ import ManageExpense from "../screens/ManageExpense";
 import RecentExpenses from "../screens/RecentExpenses";
 import AllExpenses from "../screens/AllExpenses";
 import colors from "tailwindcss/colors";
-import AddIconButton from "../UI/AddIconButton";
+import IconButton from "../components/IconButton";
 
 export default function Navigation() {
   return (
@@ -23,9 +23,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootStackNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.gray[100] },
+        headerTintColor: colors.blue[600],
+      }}
+    >
       <Stack.Screen name="ExpensesOverview" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="ManageExpense" component={ManageExpense} />
+      <Stack.Screen name="ManageExpense" component={ManageExpense} options={{ presentation: "modal" }} />
     </Stack.Navigator>
   );
 }
@@ -36,15 +41,17 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="AllExpenses"
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: colors.gray[100] },
         headerTintColor: colors.blue[600],
         tabBarStyle: { backgroundColor: colors.gray[100] },
         tabBarActiveTintColor: colors.blue[600],
         tabBarInactiveTintColor: colors.slate[400],
-        headerRight: ({ tintColor }) => <AddIconButton color={tintColor} iconName="add" size={30} />,
+        headerRight: ({ tintColor }) => (
+          <IconButton color={tintColor} iconName="add" size={30} onPress={() => navigation.navigate("ManageExpense")} />
+        ),
         // headerShadowVisible: false,
-      }}
+      })}
       // sceneContainerStyle={{ backgroundColor: colors.slate[50] }}
     >
       <BottomTab.Screen

@@ -3,14 +3,14 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "tailwindcss/colors";
 
-type AddIconButtonProps = {
+type IconButtonProps = {
   iconName: any;
   size: number;
   color: string | undefined;
   onPress?: () => void;
 };
 
-const AddIconButton: FC<AddIconButtonProps> = (props) => {
+const IconButton: FC<IconButtonProps> = (props) => {
   return (
     <View className="rounded-full" style={styles.buttonContainer}>
       <Pressable
@@ -24,7 +24,7 @@ const AddIconButton: FC<AddIconButtonProps> = (props) => {
     </View>
   );
 };
-export default AddIconButton;
+export default IconButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
