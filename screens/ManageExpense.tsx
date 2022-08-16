@@ -4,24 +4,33 @@ import { View } from "react-native";
 import colors from "tailwindcss/colors";
 import Button from "../components/UI/Button";
 import IconButton from "../components/UI/IconButton";
+import { useAppDispatch } from "../hooks/redux-hook";
 import { RootStackParamList } from "../types";
+import { addExpense, updateExpense, removeExpense } from "../store/expenses-slice";
 
 type ManageExpenseProps = NativeStackScreenProps<RootStackParamList, "ManageExpense">;
 
-const ManageExpense: FC<ManageExpenseProps & { id: string }> = (props) => {
+const ManageExpense: FC<ManageExpenseProps> = (props) => {
   const editExpenseId = props.route.params?.expenseId;
-
   const isEditing = !!editExpenseId;
 
   useLayoutEffect(() => {
     props.navigation.setOptions({ title: isEditing ? "Edit Expense" : "Add Expense" });
   }, [isEditing, props.navigation]);
 
+  const dispatch = useAppDispatch();
+
   const deleteHandler = () => {
+    dispatch(removeExpense(editExpenseId as string));
     props.navigation.goBack();
   };
 
   const confirmHandler = () => {
+    if (isEditing) {
+      dispatch(updateExpense({ id: editExpenseId, data: { amount: 9999, description: "UPDATING", date: new Date() } }));
+    } else {
+      dispatch(addExpense({ description: "ADDING", amount: 1, date: new Date() }));
+    }
     props.navigation.goBack();
   };
 

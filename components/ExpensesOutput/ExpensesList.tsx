@@ -12,7 +12,12 @@ const ExpensesList: FC<ExpensesListProps> = (props) => {
     return <ExpenseItem {...item} />;
   };
   return (
-    <FlatList className="mt-2" data={props.expenses} renderItem={renderExpenseItems} keyExtractor={({ id }) => id} />
+    <FlatList
+      className="mt-2"
+      data={props.expenses}
+      renderItem={renderExpenseItems}
+      keyExtractor={({ id }) => id as string}
+    />
   );
 };
 export default ExpensesList;

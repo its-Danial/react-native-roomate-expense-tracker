@@ -7,6 +7,6 @@ type AllExpensesProps = {};
 const AllExpenses: FC<AllExpensesProps> = (props) => {
   const expenses = useAppSelector((state) => state.expenses.expenses);
 
-  return <ExpensesOutput expenses={expenses} expensesPeriod="Total" />;
+  return <ExpensesOutput fallBackText="No expenses found!" expenses={expenses} expensesPeriod="Total" />;
 };
 export default AllExpenses;
