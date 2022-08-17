@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { FC } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
 import colors from "tailwindcss/colors";
 
 type IconButtonProps = {

@@ -2,13 +2,16 @@ import React, { FC, useState } from "react";
 import { View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Button from "../UI/Button";
+import DateButton from "../UI/DateButton";
 
 type DatePickerProps = {
-  onConfirm: (date: Date) => void;
+  onConfirm: (identifier: string, inputValue: string | Date) => void;
+  date: Date;
 };
 
 const DatePicker: FC<DatePickerProps> = (props) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  // const [date, setDate] = useState<Date>(new Date());
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -19,14 +22,15 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   };
 
   const handleConfirm = (date: Date) => {
-    props.onConfirm(date);
+    props.onConfirm("date", date);
+
     hideDatePicker();
   };
   return (
-    <View>
-      <Button mode="flat" onPress={showDatePicker}>
+    <View className="">
+      <DateButton date={props.date} onPress={showDatePicker}>
         Show Date Picker
-      </Button>
+      </DateButton>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"

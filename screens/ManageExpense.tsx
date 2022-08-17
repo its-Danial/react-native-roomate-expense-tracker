@@ -42,11 +42,11 @@ const ManageExpense: FC<ManageExpenseProps> = (props) => {
   return (
     <View className="flex-1 p-6 bg-gray-100">
       <ExpenseForm />
-      <View className="flex-row items-center justify-center">
-        <Button style="min-w-[120] mx-8" mode="flat" onPress={cancelHandler}>
+      <View className="flex-row items-center justify-between">
+        <Button style="min-w-[120] " mode="flat" onPress={cancelHandler}>
           Cancel
         </Button>
-        <Button style="min-w-[120] mx-8" onPress={confirmHandler}>
+        <Button style="min-w-[120]" onPress={confirmHandler}>
           {isEditing ? "Update" : "Add"}
         </Button>
       </View>
