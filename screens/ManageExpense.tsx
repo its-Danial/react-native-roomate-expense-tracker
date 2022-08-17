@@ -7,6 +7,7 @@ import IconButton from "../components/UI/IconButton";
 import { useAppDispatch } from "../hooks/redux-hook";
 import { RootStackParamList } from "../types";
 import { addExpense, updateExpense, removeExpense } from "../store/expenses-slice";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 type ManageExpenseProps = NativeStackScreenProps<RootStackParamList, "ManageExpense">;
 
@@ -40,6 +41,7 @@ const ManageExpense: FC<ManageExpenseProps> = (props) => {
 
   return (
     <View className="flex-1 p-6 bg-gray-100">
+      <ExpenseForm />
       <View className="flex-row items-center justify-center">
         <Button style="min-w-[120] mx-8" mode="flat" onPress={cancelHandler}>
           Cancel
