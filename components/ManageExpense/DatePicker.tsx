@@ -33,6 +33,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       </DateButton>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
+        date={props.date}
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}

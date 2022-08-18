@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import type { RootState } from "../store/store";
+import type { RootState } from "../store/store";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { Expense } from "../types";
@@ -42,6 +42,6 @@ export const expenseSlice = createSlice({
 export const { addExpense, removeExpense, updateExpense } = expenseSlice.actions;
 
 // // Other code such as selectors can use the imported `RootState` type
-// export const selectExpense = (state: RootState) => state.expenses.expenses;
+export const selectExpense = (state: RootState) => state.expenses.expenses;
 
 export default expenseSlice.reducer;
