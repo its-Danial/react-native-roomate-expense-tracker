@@ -5,8 +5,9 @@ import colors from "tailwindcss/colors";
 import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 import IconButton from "../components/UI/IconButton";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
-import { addExpense, removeExpense, selectExpense, updateExpense } from "../store/expenses-slice";
+import { addExpense, removeExpense, updateExpense } from "../store/expenses-slice";
 import { Expense, RootStackParamList } from "../types";
+import { storeExpense } from "../utils/http";
 
 type ManageExpenseProps = NativeStackScreenProps<RootStackParamList, "ManageExpense">;
 
@@ -29,11 +30,12 @@ const ManageExpense: FC<ManageExpenseProps> = (props) => {
     props.navigation.goBack();
   };
 
-  const confirmHandler = (expenseData: Expense) => {
+  const confirmHandler = async (expenseData: Expense) => {
     if (isEditing) {
       dispatch(updateExpense({ id: editExpenseId, data: expenseData }));
     } else {
-      dispatch(addExpense(expenseData));
+      const id = await storeExpense(expenseData);
+      dispatch(addExpense({ id: id, ...expenseData }));
     }
     props.navigation.goBack();
   };
