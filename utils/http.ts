@@ -1,5 +1,5 @@
 import { Expense } from "./../types";
-import axios, { AxiosPromise } from "axios";
+import axios from "axios";
 
 const firebaseUrl = "https://react-native-8a464-default-rtdb.firebaseio.com/";
 
@@ -27,4 +27,12 @@ export const fetchExpenses = async () => {
   }
 
   return expenses;
+};
+
+export const updateExpense = (id: string, expenseData: Expense) => {
+  return axios.put(firebaseUrl + `expenses/${id}.json`, expenseData);
+};
+
+export const deleteExpense = (id: string) => {
+  return axios.delete(firebaseUrl + `expenses/${id}.json`);
 };
