@@ -40,7 +40,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
-      initialRouteName="AllExpenses"
+      initialRouteName="RecentExpenses"
       screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: colors.gray[100] },
         headerTintColor: colors.blue[600],
